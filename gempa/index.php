@@ -30,6 +30,10 @@ switch ($data) {
         // 60 Gempabumi M 5.0+
         $geojson = $bmkg->getGempaM5();
         break;
+    case "dirasakan":
+        // 20 Gempabumi Dirasakan
+        $geojson = $bmkg->getGempaDirasakan();
+        break;
     default:
         echo "developed by <a href='https://hanifmu.com'><strong>hanifmu.com</strong></a>";
 }
