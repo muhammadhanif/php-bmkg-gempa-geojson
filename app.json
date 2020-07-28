@@ -1,0 +1,6 @@
+{
+  "name": "php-bmkg-gempa-geojson",
+  "description": "Konversi data gempa BMKG dari XML ke GeoJSON",
+  "repository": "https://github.com/muhammadhanif/php-bmkg-gempa-geojson",
+  "addons": []
+}
