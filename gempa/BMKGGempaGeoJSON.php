@@ -195,6 +195,64 @@ class BMKGGempaGeoJSON
         return json_encode($result);
     }
 
+    public function getGempaDirasakan()
+    {
+        $url    = 'https://data.bmkg.go.id/gempadirasakan.xml';
+        $type   = '20 Gempabumi Dirasakan';
+
+        $bmkg   = $this->_data($url, $type);
+
+        // creator
+        $result['creator']['name']          = $this->_name;
+        $result['creator']['homepage']      = $this->_homepage;
+        $result['creator']['telegram']      = $this->_telegram;
+        $result['creator']['source_code']   = $this->_source_code;
+
+        // BMKG
+        $result['data_source']['institution']   = $this->_bmkg;
+        $result['data_source']['type']          = $type;
+        $result['data_source']['url']           = $url;
+
+        // geojson
+        $result['type']     = 'FeatureCollection';
+        $result['features'] = array();
+
+        if ($bmkg['success']) {
+            // success
+            $result['success'] = true;
+
+            for ($i = 0; $i < count($bmkg['data']['Gempa']); $i++) {
+                // type
+                $gempa['type'] = 'Feature';
+
+                //properties
+                $gempa['properties']['tanggal']     = $bmkg['data']['Gempa'][$i]['Tanggal'];
+                $gempa['properties']['posisi']      = $bmkg['data']['Gempa'][$i]['Posisi'];
+                $gempa['properties']['magnitude']   = $bmkg['data']['Gempa'][$i]['Magnitude'];
+                $gempa['properties']['kedalaman']   = $bmkg['data']['Gempa'][$i]['Kedalaman'];
+                $gempa['properties']['keterangan']  = $bmkg['data']['Gempa'][$i]['Keterangan'];
+                $gempa['properties']['dirasakan']   = $bmkg['data']['Gempa'][$i]['Dirasakan'];
+
+                // geometry
+                $coordinates = explode(',', $bmkg['data']['Gempa'][$i]['point']['coordinates']);
+
+                $gempa['geometry']['type']          = 'Point';
+                $gempa['geometry']['coordinates']   = [floatval($coordinates[1]), floatval($coordinates[0])];
+
+                // tambahkan ke array $result['features']
+                array_push($result['features'], $gempa);
+            }
+        } else {
+            $result['success'] = false;
+        }
+
+        // header
+        header('HTTP/1.1 200 OK');
+        header('Content-Type: application/json');
+
+        return json_encode($result);
+    }
+
     private function _curl($url)
     {
 
