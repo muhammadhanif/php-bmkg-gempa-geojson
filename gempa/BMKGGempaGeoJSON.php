@@ -227,11 +227,11 @@ class BMKGGempaGeoJSON
 
                 //properties
                 $gempa['properties']['tanggal']     = $bmkg['data']['Gempa'][$i]['Tanggal'];
-                $gempa['properties']['posisi']     = $bmkg['data']['Gempa'][$i]['Posisi'];
+                $gempa['properties']['posisi']      = $bmkg['data']['Gempa'][$i]['Posisi'];
                 $gempa['properties']['magnitude']   = $bmkg['data']['Gempa'][$i]['Magnitude'];
                 $gempa['properties']['kedalaman']   = $bmkg['data']['Gempa'][$i]['Kedalaman'];
-                $gempa['properties']['keterangan']     = $bmkg['data']['Gempa'][$i]['Keterangan'];
-                $gempa['properties']['dirasakan']     = $bmkg['data']['Gempa'][$i]['Dirasakan'];
+                $gempa['properties']['keterangan']  = $bmkg['data']['Gempa'][$i]['Keterangan'];
+                $gempa['properties']['dirasakan']   = $bmkg['data']['Gempa'][$i]['Dirasakan'];
 
                 // geometry
                 $coordinates = explode(',', $bmkg['data']['Gempa'][$i]['point']['coordinates']);
