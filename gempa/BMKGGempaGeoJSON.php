@@ -151,7 +151,7 @@ class BMKGGempaGeoJSON
 
         // BMKG
         $result['data_source']['institution']   = $this->_bmkg;
-        $result['data_source']['type']          = 'Gempa M 5.0+ Terkini';
+        $result['data_source']['type']          = '60 Gempabumi M 5.0+';
         $result['data_source']['url']           =  $url;
 
         // geojson
