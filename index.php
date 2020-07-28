@@ -25,7 +25,7 @@ switch ($gempa) {
         $geojson = $bmkg->getGempaBerpotensiTsunamiTerkini();
         break;
     default:
-        echo "Konversi data gempa BMKG dari XML ke GeoJSON.";
+        echo "developed by <a href='https://hanifmu.com'><strong>hanifmu.com</strong></a>";
 }
 
 print_r($geojson);
