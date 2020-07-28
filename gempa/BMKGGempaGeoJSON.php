@@ -162,7 +162,7 @@ class BMKGGempaGeoJSON
             // success
             $result['success'] = true;
 
-            for ($i = 1; $i < count($bmkg['data']['gempa']); $i++) {
+            for ($i = 0; $i < count($bmkg['data']['gempa']); $i++) {
                 // type
                 $gempa['type'] = 'Feature';
 
