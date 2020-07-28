@@ -38,7 +38,7 @@ class BMKGGempaGeoJSON
 
         // BMKG
         $result['data_source']['institution']   = $this->_bmkg;
-        $result['data_source']['type']          = 'Gempa M 5.0+ Terkini';
+        $result['data_source']['type']          = $type;
         $result['data_source']['url']           = $url;
 
         // geojson
@@ -98,7 +98,7 @@ class BMKGGempaGeoJSON
 
         // BMKG
         $result['data_source']['institution']   = $this->_bmkg;
-        $result['data_source']['type']          = 'Gempa Berpotensi Tsunami Terkini';
+        $result['data_source']['type']          = $type;
         $result['data_source']['url']           = $url;
 
         // geojson
@@ -151,8 +151,8 @@ class BMKGGempaGeoJSON
 
         // BMKG
         $result['data_source']['institution']   = $this->_bmkg;
-        $result['data_source']['type']          = '60 Gempabumi M 5.0+';
-        $result['data_source']['url']           =  $url;
+        $result['data_source']['type']          = $type;
+        $result['data_source']['url']           = $url;
 
         // geojson
         $result['type']     = 'FeatureCollection';
