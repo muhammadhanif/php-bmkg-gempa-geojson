@@ -21,6 +21,9 @@ switch ($gempa) {
     case "m-5-terkini":
         $geojson = $bmkg->getGempaM5Terkini();
         break;
+    case "tsunami-terkini":
+        $geojson = $bmkg->getGempaBerpotensiTsunamiTerkini();
+        break;
     default:
         echo "Konversi data gempa BMKG dari XML ke GeoJSON.";
 }
