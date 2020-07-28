@@ -26,8 +26,11 @@ switch ($data) {
         // Gempa Berpotensi Tsunami Terkini
         $geojson = $bmkg->getGempaBerpotensiTsunamiTerkini();
         break;
+    case "m-5":
+        // 60 Gempabumi M 5.0+
+        $geojson = $bmkg->getGempaM5();
+        break;
     default:
         echo "developed by <a href='https://hanifmu.com'><strong>hanifmu.com</strong></a>";
 }
-
 print_r($geojson);
