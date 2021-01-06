@@ -16,7 +16,7 @@ class BMKGGempaGeoJSON
         // creator
         $this->_name           = "Muhammad Hanif";
         $this->_homepage       = "https://hanifmu.com";
-        $this->_telegram       = "https://t.me/muhammad_hanif";
+        $this->_telegram       = "https://t.me/hanifmu";
         $this->_source_code    = "https://github.com/muhammadhanif/codeigniter-bmkg-gempa-geojson";
 
         // bmkg

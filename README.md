@@ -1,6 +1,6 @@
 # php-bmkg-gempa-geojson
 
-Aplikasi ini dibangun dengan tujuan untuk melakukan konversi data gempa BMKG yang tersedia di [https://data.bmkg.go.id/gempabumi/](https://data.bmkg.go.id/gempabumi/) dengan format XML. Dengan aplikasi ini, data berformat XML tersebut diubah ke dalam format [GeoJSON](https://tools.ietf.org/html/rfc7946).
+Aplikasi ini dibangun dengan tujuan untuk melakukan konversi data gempa bumi BMKG yang tersedia di [https://data.bmkg.go.id/gempabumi/](https://data.bmkg.go.id/gempabumi/) dengan format XML ke dalam format [GeoJSON](https://tools.ietf.org/html/rfc7946).
 
 ## Data Gempa
 
