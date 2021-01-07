@@ -17,7 +17,7 @@ class BMKGGempaGeoJSON
         $this->_name           = "Muhammad Hanif";
         $this->_homepage       = "https://hanifmu.com";
         $this->_telegram       = "https://t.me/hanifmu";
-        $this->_source_code    = "https://github.com/muhammadhanif/codeigniter-bmkg-gempa-geojson";
+        $this->_source_code    = "https://github.com/muhammadhanif/php-bmkg-gempa-geojson.git";
 
         // bmkg
         $this->_bmkg           = "BMKG (Badan Meteorologi, Klimatologi, dan Geofisika)";
