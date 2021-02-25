@@ -25,7 +25,7 @@ class BMKGGempaGeoJSON
 
     public function getGempaM5Terkini()
     {
-        $url    = 'https://data.bmkg.go.id/autogempa.xml';
+        $url    = 'https://data.bmkg.go.id/DataMKG/TEWS/autogempa.xml';
         $type   = 'Gempa M 5.0+ Terkini';
 
         $bmkg   = $this->_data($url, $type);
@@ -83,63 +83,10 @@ class BMKGGempaGeoJSON
         return json_encode($result);
     }
 
-    public function getGempaBerpotensiTsunamiTerkini()
-    {
-        $url    = 'https://data.bmkg.go.id/lasttsunami.xml';
-        $type   = 'Gempa Berpotensi Tsunami Terkini';
-
-        $bmkg = json_decode(json_encode($this->_data($url, $type)), TRUE);
-
-        // creator
-        $result['creator']['name']          = $this->_name;
-        $result['creator']['homepage']      = $this->_homepage;
-        $result['creator']['telegram']      = $this->_telegram;
-        $result['creator']['source_code']   = $this->_source_code;
-
-        // BMKG
-        $result['data_source']['institution']   = $this->_bmkg;
-        $result['data_source']['type']          = $type;
-        $result['data_source']['url']           = $url;
-
-        // geojson
-        $result['type']     = 'FeatureCollection';
-        $result['features'] = array();
-
-        if ($bmkg['success']) {
-            // success
-            $result['success'] = true;
-
-            // type
-            $result['features'][0]['type'] = 'Feature';
-
-            //properties
-            $result['features'][0]['properties']['tanggal']     = $bmkg['data']['Gempa']['Tanggal'];
-            $result['features'][0]['properties']['jam']         = $bmkg['data']['Gempa']['Jam'];
-            $result['features'][0]['properties']['lintang']     = $bmkg['data']['Gempa']['Lintang'];
-            $result['features'][0]['properties']['bujur']       = $bmkg['data']['Gempa']['Bujur'];
-            $result['features'][0]['properties']['magnitude']   = $bmkg['data']['Gempa']['Magnitude'];
-            $result['features'][0]['properties']['kedalaman']   = $bmkg['data']['Gempa']['Kedalaman'];
-            $result['features'][0]['properties']['area']   = $bmkg['data']['Gempa']['Area'];
-            $result['features'][0]['properties']['linkdetail']   = $bmkg['data']['Gempa']['Linkdetail'];
-
-            // geometry
-            $result['features'][0]['geometry']['type']          = 'Point';
-            $result['features'][0]['geometry']['coordinates']   = [floatval($bmkg['data']['Gempa']['Bujur']), floatval($bmkg['data']['Gempa']['Lintang'])];
-        } else {
-            $result['success'] = false;
-        }
-
-        // header
-        header('HTTP/1.1 200 OK');
-        header('Content-Type: application/json');
-
-        return json_encode($result);
-    }
-
     public function getGempaM5()
     {
-        $url    = 'https://data.bmkg.go.id/gempaterkini.xml';
-        $type   = '60 Gempabumi M 5.0+';
+        $url    = 'https://data.bmkg.go.id/DataMKG/TEWS/gempaterkini.xml';
+        $type   = '15 Gempa Bumi M 5.0+';
 
         $bmkg   = $this->_data($url, $type);
 
@@ -197,8 +144,8 @@ class BMKGGempaGeoJSON
 
     public function getGempaDirasakan()
     {
-        $url    = 'https://data.bmkg.go.id/gempadirasakan.xml';
-        $type   = '20 Gempabumi Dirasakan';
+        $url    = 'https://data.bmkg.go.id/DataMKG/TEWS/gempadirasakan.xml';
+        $type   = '15 Gempa Bumi Dirasakan';
 
         $bmkg   = $this->_data($url, $type);
 
@@ -221,23 +168,24 @@ class BMKGGempaGeoJSON
             // success
             $result['success'] = true;
 
-            for ($i = 0; $i < count($bmkg['data']['Gempa']); $i++) {
+            for ($i = 0; $i < count($bmkg['data']['gempa']); $i++) {
                 // type
                 $gempa['type'] = 'Feature';
 
                 //properties
-                $gempa['properties']['tanggal']     = $bmkg['data']['Gempa'][$i]['Tanggal'];
-                $gempa['properties']['posisi']      = $bmkg['data']['Gempa'][$i]['Posisi'];
-                $gempa['properties']['magnitude']   = $bmkg['data']['Gempa'][$i]['Magnitude'];
-                $gempa['properties']['kedalaman']   = $bmkg['data']['Gempa'][$i]['Kedalaman'];
-                $gempa['properties']['keterangan']  = $bmkg['data']['Gempa'][$i]['Keterangan'];
-                $gempa['properties']['dirasakan']   = $bmkg['data']['Gempa'][$i]['Dirasakan'];
+                $gempa['properties']['tanggal']     = $bmkg['data']['gempa'][$i]['Tanggal'];
+                $gempa['properties']['jam']         = $bmkg['data']['gempa'][$i]['Jam'];
+                $gempa['properties']['lintang']     = $bmkg['data']['gempa'][$i]['Lintang'];
+                $gempa['properties']['bujur']       = $bmkg['data']['gempa'][$i]['Bujur'];
+                $gempa['properties']['magnitude']   = $bmkg['data']['gempa'][$i]['Magnitude'];
+                $gempa['properties']['kedalaman']   = $bmkg['data']['gempa'][$i]['Kedalaman'];
+                $gempa['properties']['dirasakan']   = $bmkg['data']['gempa'][$i]['Dirasakan'];
 
                 // geometry
-                $coordinates = explode(',', $bmkg['data']['Gempa'][$i]['point']['coordinates']);
+                $coordinates = explode(',', $bmkg['data']['gempa'][$i]['point']['coordinates']);
 
                 $gempa['geometry']['type']          = 'Point';
-                $gempa['geometry']['coordinates']   = [floatval($coordinates[1]), floatval($coordinates[0])];
+                $gempa['geometry']['coordinates']   = [floatval($coordinates[0]), floatval($coordinates[1])];
 
                 // tambahkan ke array $result['features']
                 array_push($result['features'], $gempa);
@@ -245,6 +193,7 @@ class BMKGGempaGeoJSON
         } else {
             $result['success'] = false;
         }
+
 
         // header
         header('HTTP/1.1 200 OK');

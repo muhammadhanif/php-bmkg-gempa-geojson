@@ -22,10 +22,6 @@ switch ($data) {
         // Gempa M 5+ Terkini
         $geojson = $bmkg->getGempaM5Terkini();
         break;
-    case "tsunami-terkini":
-        // Gempa Berpotensi Tsunami Terkini
-        $geojson = $bmkg->getGempaBerpotensiTsunamiTerkini();
-        break;
     case "m-5":
         // 60 Gempabumi M 5.0+
         $geojson = $bmkg->getGempaM5();
