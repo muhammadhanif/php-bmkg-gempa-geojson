@@ -176,6 +176,7 @@ class BMKGGempaGeoJSON
                 $gempa['properties']['magnitude']   = $bmkg['data']['gempa'][$i]['Magnitude'];
                 $gempa['properties']['kedalaman']   = $bmkg['data']['gempa'][$i]['Kedalaman'];
                 $gempa['properties']['dirasakan']   = $bmkg['data']['gempa'][$i]['Dirasakan'];
+                $gempa['properties']['wilayah']   = $bmkg['data']['gempa'][$i]['Wilayah'];
 
                 // geometry
                 $coordinates = explode(',', $bmkg['data']['gempa'][$i]['point']['coordinates']);
