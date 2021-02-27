@@ -20,7 +20,7 @@ $geojson = null;
 switch ($data) {
     case "m-5-terkini":
         // Gempa M 5+ Terkini
-        $geojson = $bmkg->getGempaM5Terkini();
+        $geojson = $bmkg->getGempaTerkini();
         break;
     case "m-5":
         // 60 Gempabumi M 5.0+

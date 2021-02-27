@@ -23,10 +23,10 @@ class BMKGGempaGeoJSON
         $this->_bmkg           = "BMKG (Badan Meteorologi, Klimatologi, dan Geofisika)";
     }
 
-    public function getGempaM5Terkini()
+    public function getGempaTerkini()
     {
         $url    = 'https://data.bmkg.go.id/DataMKG/TEWS/autogempa.xml';
-        $data   = 'Gempa Bumi Terbaru';
+        $data   = 'Gempa Bumi Terkini';
 
         $bmkg   = $this->_data($url);
 
